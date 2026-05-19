@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Portfolio</title>
+    <!-- Importing Google Fonts for a high-quality, modern tech aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;       /* Clean, soft slate-grey background */
+            --text-color: #0f172a;     /* Deep navy/slate for executive readability */
+            --accent-color: #0284c7;   /* Refined tech cyan/blue */
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;   /* Muted, premium border tint */
+            --subtle-text: #64748b;    /* Elegant slate grey for descriptions */
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Fluid Layout Wrapper that consumes the whole screen gracefully */
+        .fluid-container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 6%;  
+            padding-right: 6%; 
+            box-sizing: border-box;
+        }
+
+        /* Header Layout Split for Profile Picture Alignment */
+        header {
+            padding-top: 70px;
+            padding-bottom: 40px;
+            display: flex;
+            gap: 50px; 
+            align-items: flex-start;
+        }
+
+        /* Large Profile Image Frame with sophisticated shadow and border radius */
+        .profile-container {
+            flex-shrink: 0;
+            width: 260px; 
+            height: 260px;
+            border-radius: 16px; 
+            background-color: #e2e8f0;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Temporary professional avatar placeholder */
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+        }
+        .avatar-head {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background-color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .avatar-body {
+            width: 120px;
+            height: 60px;
+            border-radius: 60px 60px 0 0;
+            background-color: #94a3b8;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; 
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Right side contents inside header wrap */
+        .header-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 260px; 
+        }
+
+        h1 {
+            font-size: 3rem; 
+            margin-top: 0;
+            margin-bottom: 6px;
+            color: var(--text-color);
+            letter-spacing: -1px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        /* Contact Metadata Badge Row with icons */
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-size: 0.9rem;
+            color: var(--subtle-text);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .meta-item a {
+            color: var(--subtle-text);
+            transition: color 0.2s ease;
+        }
+
+        .meta-item a:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .bio {
+            font-size: 1.1rem;
+            max-width: 950px;
+            color: #334155;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        main {
+            padding-top: 20px;
+            padding-bottom: 60px;
+            flex-grow: 1;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        /* Skills Tag Styling - Made cleaner and professional */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background-color: #ffffff;
+            color: #334155;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            letter-spacing: 0.2px;
+        }
+
+        /* Intelligent Auto-wrapping Flex Layout Engine */
+        .dynamic-flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+        }
+
+        /* Card Base Setup with Interactive Hover Physics */
+        .portfolio-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1 1 calc(33.333% - 28px); 
+            min-width: 300px; 
+            box-sizing: border-box;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        /* Elegant Lift-up effect on hover */
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
+        }
+
+        /* Certificate Image Card Element Box */
+        .cert-image-container {
+            width: 100%;
+            height: 170px;
+            background-color: #f8fafc; 
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .cert-image-placeholder-text {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .cert-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        /* Certificate Text details */
+        .cert-info {
+            margin-bottom: 20px;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0 0 6px 0;
+            letter-spacing: -0.2px;
+        }
+
+        .cert-issuer {
+            color: var(--subtle-text);
+            font-size: 0.9rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Project Styling adjustments */
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            letter-spacing: -0.2px;
+        }
+
+        .project-desc {
+            color: var(--subtle-text);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .action-link {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            transition: color 0.2s ease;
+        }
+
+        .action-link:hover {
+            color: #0369a1; /* Deepens slightly on text hover */
+        }
+
+        footer {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            font-size: 0.9rem;
+            color: var(--subtle-text);
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+            font-weight: 500;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Custom smooth focus configurations */
+        a:focus-visible, .portfolio-card:focus-within {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 4px;
+        }
+
+        /* Adjustments for smaller mobile screen breakpoints */
+        @media (max-width: 850px) {
+            header {
+                flex-direction: column; 
+                gap: 30px;
+                padding-top: 40px;
+                align-items: center;
+                text-align: center;
+            }
+            .profile-container {
+                width: 220px;
+                height: 220px;
+            }
+            .header-content {
+                min-height: auto;
+                align-items: center;
+            }
+            .meta-info {
+                justify-content: center;
+                gap: 16px;
+            }
+            .dynamic-flex-container {
+                flex-direction: column;
+            }
+            .portfolio-card {
+                flex: 1 1 100%;
+            }
+            .fluid-container {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            h1 {
+                font-size: 2.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fluid-container">
+
+        <header>
+            <!-- Profile Image Container Frame -->
+            <div class="profile-container">
+                <div class="avatar-placeholder">
+                    <div class="avatar-head"></div>
+                    <div class="avatar-body"></div>
+                </div>
+                <img src="profile.jpeg" alt="Profile Photo" class="profile-img" style="display: block;">
+            </div>
+
+            <!-- Profile Identity Details Metadata Block -->
+            <div class="header-content">
+                <h1>Clarence D. Liup</h1> 
+                <p class="subtitle">Aspiring Data Specialist & Engineer</p>
+
+                <!-- School, Contacts, and Socials Metadata Row -->
+                <div class="meta-info">
+                    <div class="meta-item">🏫 Polytechnic University of the Philippines - Manila</div>
+                    <div class="meta-item">📞 +639482000906</div>
+                    <div class="meta-item">✉️ <a href="mailto:clarenceliup25@gmail.com">clarenceliup25@gmail.com</a></div>
+                    <div class="meta-item">🔗 <a href="https://www.linkedin.com/in/clarence-liup-501a55217/" target="_blank">linkedin - Clarence Liup</a></div>
+                    <div class="meta-item">💻 <a href="https://github.com/Renzze-Engr" target="_blank">GitHub Profile</a></div>
+                </div>
+
+                <p class="bio">
+                    Welcome to my data portfolio! I am a passionate engineering student transitioning into the world of Data Science, Data Engineering, and Machine Learning. Currently, I am actively building my foundation, learning core toolsets, and preparing to transform raw data into impactful pipelines and insights.
+                </p>
+            </div>
+        </header>
+
+        <main>
+            <!-- Skills Section -->
+            <section id="skills">
+                <h2>Core Learning Focus & Skills</h2>
+                <div class="skills-grid">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Engineering (ETL)</span>
+                    <span class="skill-tag">Machine Learning Fundamentals</span>
+                    <span class="skill-tag">Data Analytics</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                </div>
+            </section>
+
+            <!-- Certifications Section -->
+            <section id="certificates">
+                <h2>Certifications & Learning Paths</h2>
+                <div class="dynamic-flex-container">
+                    
+                    <!-- Cert Card 1 -->
+                    <div class="portfolio-card">
+                        <div>
+                            <div class="cert-image-container">
+                                <span class="cert-image-placeholder-text">Certificate Preview Image</span>
+                                <img src="#" alt="Certificate 1 Preview" class="cert-img" style="display: none;">
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">[Certificate Name 1]</h3>
+                                <p class="cert-issuer">[e.g., Coursera, DataCamp, AWS]</p>
+                            </div>
+                        </div>
+                        <a href="#" class="action-link" target="_blank">Verify Credential →</a>
+                    </div>
+
+                    <!-- Cert Card 2 -->
+                    <div class="portfolio-card">
+                        <div>
+                            <div class="cert-image-container">
+                                <span class="cert-image-placeholder-text">Certificate Preview Image</span>
+                                <img src="#" alt="Certificate 2 Preview" class="cert-img" style="display: none;">
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">[Certificate Name 2]</h3>
+                                <p class="cert-issuer">[e.g., Google, Udacity, Microsoft]</p>
+                            </div>
+                        </div>
+                        <a href="#" class="action-link" target="_blank">Verify Credential →</a>
+                    </div>
+
+                    <!-- Cert Card 3 -->
+                    <div class="portfolio-card">
+                        <div>
+                            <div class="cert-image-container">
+                                <span class="cert-image-placeholder-text">Certificate Preview Image</span>
+                                <img src="#" alt="Certificate 3 Preview" class="cert-img" style="display: none;">
+                            </div>
+                            <div class="cert-info">
+                                <h3 class="cert-title">[Certificate Name 3]</h3>
+                                <p class="cert-issuer">[e.g., Open Source Program / Bootcamp]</p>
+                            </div>
+                        </div>
+                        <a href="#" class="action-link" target="_blank">Verify Credential →</a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects">
+                <h2>Featured Projects</h2>
+                <div class="dynamic-flex-container">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="portfolio-card">
+                        <div>
+                            <h3 class="project-title">[Project 1 Title]</h3>
+                            <p class="project-desc">
+                                A brief summary explaining the data problem you solved, the dataset used, and your ultimate results.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="project-tags">
+                                <span>#Python</span> <span>#Pandas</span>
+                            </div>
+                            <a href="#" class="action-link" target="_blank">View Project on GitHub →</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="portfolio-card">
+                        <div>
+                            <h3 class="project-title">[Project 2 Title]</h3>
+                            <p class="project-desc">
+                                Describe how you extracted, transformed, and loaded data from a source API or file into a database.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="project-tags">
+                                <span>#DataEngineering</span> <span>#SQL</span>
+                            </div>
+                            <a href="#" class="action-link" target="_blank">View Project on GitHub →</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="portfolio-card">
+                        <div>
+                            <h3 class="project-title">[Project 3 Title]</h3>
+                            <p class="project-desc">
+                                A clean placeholder for your third data science, analytics, or machine learning model pipeline experiment.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="project-tags">
+                                <span>#MachineLearning</span> <span>#SciKitLearn</span>
+                            </div>
+                            <a href="#" class="action-link" target="_blank">View Project on GitHub →</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 | Built with HTML & CSS. Handcrafted for Data Engineering & Science.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
