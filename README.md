@@ -44,6 +44,6 @@ I am actively focusing on building modular, scalable systems and transforming ra
 
 Let's discuss data pipelines, systems optimization, or machine learning applications!
 
-*   **LinkedIn:** [www.linkedin.com/in/clarence-liup-501a55217](Linkedin)
-*   **Email:** [clarenceliup25@gmail.com](mailto:your.email@example.com)
-*   **GitHub:** [https://github.com/clarencedliup](Github)
+*   **LinkedIn:** [www.linkedin.com/in/clarence-liup-501a55217](www.linkedin.com/in/clarence-liup-501a55217)
+*   **Email:** [clarenceliup25@gmail.com](mailto:clarenceliup25@gmail.com)
+*   **GitHub:** [https://github.com/clarencedliup](https://github.com/clarencedliup])
