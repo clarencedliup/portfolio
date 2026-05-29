@@ -2,7 +2,7 @@
 
 Welcome to my data repository! This space serves as a central hub for my project implementations, technical milestones, and active learning roadmap as I transition into Data Engineering, Machine Learning, and Data Science.
 
-🚀 **Live Portfolio Website:** [https://clarencedliup.github.io](https://clarencedliup.github.io)
+🚀 **Live Portfolio Website:** [https://clarencedliup.github.io/portfolio/](https://clarencedliup.github.io)
 
 ---
 
