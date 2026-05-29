@@ -2,7 +2,7 @@
 
 Welcome to my data repository! This space serves as a central hub for my project implementations, technical milestones, and active learning roadmap as I transition into Data Engineering, Machine Learning, and Data Science.
 
-🚀 **Live Portfolio Website:** [https://clarencedliup.github.io/portfolio/](https://clarencedliup.github.io)
+🚀 **Live Portfolio Website:** [https://clarencedliup.github.io/portfolio/](https://clarencedliup.github.io/portfolio/)
 
 ---
 
@@ -44,6 +44,6 @@ I am actively focusing on building modular, scalable systems and transforming ra
 
 Let's discuss data pipelines, systems optimization, or machine learning applications!
 
-*   **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-*   **Email:** [your.email@example.com](mailto:your.email@example.com)
-*   **GitHub:** [github.com/yourusername](https://github.com/yourusername)
+*   **LinkedIn:** [www.linkedin.com/in/clarence-liup-501a55217](Linkedin)
+*   **Email:** [clarenceliup25@gmail.com](mailto:your.email@example.com)
+*   **GitHub:** [https://github.com/clarencedliup](Github)
